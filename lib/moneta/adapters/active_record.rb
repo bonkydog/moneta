@@ -15,7 +15,7 @@ module Moneta
         @options = options
         unless self.class.const_defined?('Store')
           self.class.const_set('Store', Class.new(::ActiveRecord::Base)) # this prevents loading issues when active_record gem is unavailable
-          Store.set_table_name(@options[:table] || 'moneta_store')
+          Store.table_name = @options[:table] || 'moneta_store'
         end
 
         if @options[:connection]
